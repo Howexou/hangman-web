@@ -16,21 +16,27 @@ header {
     text-align: center;
 }
 
-/* Style du titre principal */
+/* Style du titre principa  l */
 h1 {
     font-size: 2em;
+    text-align: center;
 }
 
 /* Style du contenu principal */
 main {
     padding: 20px;
     text-align: center;
+    margin-top: 250px;
+    margin-bottom: 500px;
+    margin-left: 500px;
+    margin-right: 500px;
 }
 
 /* Style du paragraphe */
 p {
     color: #555;
     font-size: 1.2em;
+    
 }
 
 /* Style des boutons */
@@ -41,10 +47,9 @@ button {
     border: none;
     cursor: pointer;
     font-size: 1em;
-    margin-top: 250px;
-    margin-bottom: 500px;
-    margin-left: 500px;
-    margin-right: 500px;
+    
+
+
 }
 
 button:hover {
