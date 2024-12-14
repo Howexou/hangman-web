@@ -5,37 +5,46 @@ import (
 	"net/http"
 )
 
-func Play(w http.ResponseWriter, r *http.Request) {
-	word := PickWord()
-	hiddenWord := ""
-	
-	for range word {
-        hiddenWord += "_"
+// Initialiser le jeu
+func initGame() {
+	word = PickWord()          // Mot à deviner
+	hiddenWord = ""            // Réinitialise le mot caché
+	for range word {           // Crée "_" pour chaque lettre
+		hiddenWord += "_"
+	}
+}
 
+func Play(w http.ResponseWriter, r *http.Request) {
+	// On initialise
+	if word == "" {
+		initGame()
+	}
+
+	// Gestion de la lettre devinée
 	if r.Method == "POST" {
 		r.ParseForm()
-		guess := r.FormValue("guess")
+		guess := r.FormValue("guess") // Récupère la lettre qui a été guess
 
-		// Mettre à jour les "_" si la lettre devinée est correcte
+		// Mise à jour du mot caché
 		newHiddenWord := ""
 		for i, char := range word {
-			if string(char) == guess {
+			if string(char) == guess { // Lettre correcte
 				newHiddenWord += string(char)
 			} else {
-				newHiddenWord += string(hiddenWord[i])
+				newHiddenWord += string(hiddenWord[i]) // Conserve les lettres déjà trouvées
 			}
 		}
 		hiddenWord = newHiddenWord
 	}
 
+	// Structure des données envoyées au template
 	data := struct {
-		Word       string
 		HiddenWord string
 	}{
-		Word:       word,
 		HiddenWord: hiddenWord,
 	}
 
+	// Charger et afficher le template
 	t, err := template.ParseFiles("./templates/Play.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
