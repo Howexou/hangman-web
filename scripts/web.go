@@ -12,6 +12,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 
 func HandleRequests() {
 	http.HandleFunc("/", handleIndex)
+	http.HandleFunc("/play", Play)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
 	http.ListenAndServe(":8081", nil)
 }
@@ -36,3 +37,4 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, Template, WebData)
 
 }
+
