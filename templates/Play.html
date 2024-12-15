@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Jeu du Pendu</title>
+    <link rel="stylesheet" href="static/Play.css">
 </head>
 <body>
+    
+    <div class="answerbox">
     <h1>Jeu du Pendu</h1>
+    <img src="static/hangman-game-images/images/hangman-0.svg" alt="hangman-game-images">
     <p>Mot à deviner :</p>
     <h2>{{.HiddenWord}}</h2>
 
@@ -14,5 +18,6 @@
         <input type="text" id="guess" name="guess" maxlength="1" required>
         <button type="submit">Valider</button>
     </form>
+    </div>
 </body>
 </html>
