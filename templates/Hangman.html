@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hangman - Partie</title>
+</head>
+<body>
+    <h1>Jeu Hangman</h1>
+    <p>Mot à deviner : <strong>{{.Found}}</strong></p>
+
+    <p>Vies restantes : {{.NbDeVie}}</p>
+
+    <p>Lettres tentées : 
+        {{if .DejaMis}}
+            {{range .DejaMis}}{{.}} {{end}}
+        {{else}}
+            Aucune pour le moment.
+        {{end}}
+    </p>
+
+
+    <form action="/hangman" method="POST">
+        <label for="letter">Entrez une lettre :</label>
+        <input type="text" id="letter" name="letter" maxlength="1" required>
+        <button type="submit">Valider</button>
+    </form>
+
+    {{if eq .NbDeVie 0}}
+        <p style="color: red;">Vous avez perdu ! Le mot était : {{.Word}}</p>
+        <a href="/"><button>Recommencer</button></a>
+    {{else if eq .Found .Word}}
+        <p style="color: green;">Bravo ! Vous avez gagné !</p>
+        <a href="/"><button>Recommencer</button></a>
+    {{end}}
+</body>
+</html>

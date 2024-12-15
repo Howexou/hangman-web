@@ -1,37 +1,66 @@
 package hangman
 
 import (
-	"bufio"
 	"fmt"
 	"math/rand"
-	"os"
+	"time"
 )
 
-// Importe les mots dans un tableau de string
-func Words() {
-	// Ouvre le fichier
-	f, err := os.Open("DICTIONNAIRE/words.txt")
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	r := bufio.NewReader(f)
+var WordsList []string 
 
-	// Lire ligne par ligne
-	for {
-		line, err := r.ReadString('\n')
-		if err != nil {
-			break
-		}
-		WordsList = append(WordsList, line)
-	}
-
-	// Fermer le fichier
-	defer f.Close()
+func LoadWords() {
+	WordsList = []string{"chien", "soleil", "porte", "chat"}
 }
 
-// Choix de mot aléatoire dans words.txt
 func PickWord() string {
-	Word = WordsList[rand.Intn(len(WordsList))]
-	return Word
+	rand.Seed(time.Now().UnixNano())
+	if len(WordsList) == 0 {
+		return ""
+	}
+	return WordsList[rand.Intn(len(WordsList))]
+}
+
+func InitGame() {
+	word := PickWord()
+	if word == "" {
+		fmt.Println("Erreur : Aucun mot disponible.")
+		return
+	}
+
+	hidden := ""
+	for range word {
+		hidden += "_"
+	}
+
+	LeJeu = Jeu{
+		Word:    word,
+		Found:   hidden,
+		NbDeVie: 8,
+		DejaMis: []rune{},
+	}
+}
+
+func ProcessLetter(letter rune) {
+	for _, l := range LeJeu.DejaMis {
+		if l == letter {
+			return
+		}
+	}
+
+	LeJeu.DejaMis = append(LeJeu.DejaMis, letter)
+
+	found := false
+	runes := []rune(LeJeu.Found)
+	for i, ch := range LeJeu.Word {
+		if rune(ch) == letter {
+			runes[i] = letter
+			found = true
+		}
+	}
+
+	LeJeu.Found = string(runes)
+
+	if !found {
+		LeJeu.NbDeVie--
+	}
 }

@@ -1,5 +1,10 @@
 package hangman
 
-var WordsList []string //Dictionnaire
-var Word string        // Mot choisi au hasard
+type Jeu struct {
+	Word string
+	Found string
+	NbDeVie int
+	DejaMis []rune
+}
 
+var LeJeu Jeu
