@@ -1,6 +1,60 @@
+
 body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/static/hangman-game-images/sun.png');
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+}
 
 
-background-color: aquamarine;
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+
+h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+
+main {
+    padding: 20px;
+    text-align: center;
+}
+
+
+p {
+    color: #555;
+    font-size: 1.2em;
+}
+
+
+
+.button-link {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    bottom: 15%; 
+    padding: 10px 20px; 
+    font-size: 18px; 
+    color: white; 
+    background-color: #4CAF50; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease; 
+}
+
+button:hover {
+    background-color: #333c6e;
 
 }
+
