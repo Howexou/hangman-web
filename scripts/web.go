@@ -10,6 +10,7 @@ func Home(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "Home", nil)
 }
 
+// Configure les routes HTTP
 func HandleRequests() {
 	http.HandleFunc("/", handleIndex)
 	http.HandleFunc("/play", Play)
@@ -17,7 +18,8 @@ func HandleRequests() {
 	http.ListenAndServe(":8081", nil)
 }
 
-func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
+// Afficher le HTML avec des données "dynamiques"
+func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) { 
 	t, err := template.ParseFiles(Template)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -26,7 +28,8 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 	t.Execute(w, data)
 }
 
-func handleIndex(w http.ResponseWriter, r *http.Request) {
+// Gère les requêtes HTTP pour la route "/"
+func handleIndex(w http.ResponseWriter, r *http.Request) { 
 	randomWord := PickWord()
 	fmt.Println("Mot aléatoire généré : ", randomWord)
 

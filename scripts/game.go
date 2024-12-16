@@ -14,7 +14,7 @@ func initGame() {
 	}
 }
 
-func Play(w http.ResponseWriter, r *http.Request) {
+func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 	// On initialise
 	if word == "" {
 		initGame()
