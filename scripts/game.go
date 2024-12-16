@@ -1,7 +1,6 @@
 package hangman
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
 	"strconv"
@@ -10,16 +9,16 @@ import (
 // Initialiser le jeu
 func initGame() {
 	word = PickWord() // Mot à deviner
-	fmt.Println(word, len(word))
-	hiddenWord = ""  // Réinitialise le mot caché
-	for range word { // Crée "_" pour chaque lettre
+	hiddenWord = ""   // Réinitialise le mot caché
+	for range word {  // Crée "_" pour chaque lettre
 		hiddenWord += "_"
 	}
+	lives = 6
 }
 
 func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
-	// On initialise
-	if word == "" {
+
+		if word == "" { // On initialise
 		initGame()
 	}
 
@@ -67,7 +66,7 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 	data.PhaseHangman = "/static/hangman-game-images/hangman-" + strconv.Itoa(6-lives) + ".svg"
 
 	// Charger et afficher le template
-	t, err := template.ParseFiles("./templates/Play.html")
+	t, err := template.ParseFiles("templates/Play.html")
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
 		return
@@ -82,4 +81,8 @@ func CheckWin(hiddenWord string) bool {
 		}
 	}
 	return true // Le mot est complété
+}
+func RestartGame(w http.ResponseWriter, r *http.Request) {
+	initGame() // Réinitialiser toutes les variables globales
+	http.Redirect(w, r, "/play", http.StatusSeeOther) // Rediriger vers le jeu
 }

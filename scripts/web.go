@@ -16,6 +16,7 @@ func HandleRequests() {
 	http.HandleFunc("/play", Play)
 	http.HandleFunc("/win", Win)
 	http.HandleFunc("/lose", Lose)
+	http.HandleFunc("/restart", RestartGame)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
 	http.ListenAndServe(":8081", nil)
 }
