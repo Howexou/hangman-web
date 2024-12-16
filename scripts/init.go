@@ -1,15 +1,36 @@
 package hangman
 
 import (
+	"bufio"
 	"fmt"
 	"math/rand"
+	"os"
+	"strings"
 	"time"
 )
 
-var WordsList []string 
+var WordsList []string
 
 func LoadWords() {
-	WordsList = []string{"chien", "soleil", "porte", "chat"}
+	file, err := os.Open("DICTIONNAIRE/words.txt")
+	if err != nil {
+		return
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		word := strings.TrimSpace(scanner.Text())
+		if word != "" {
+			WordsList = append(WordsList, word)
+		}
+	}
+
+	if err := scanner.Err(); err != nil {
+		if err != nil {
+			return
+		}
+	}
 }
 
 func PickWord() string {
@@ -19,6 +40,7 @@ func PickWord() string {
 	}
 	return WordsList[rand.Intn(len(WordsList))]
 }
+
 
 func InitGame() {
 	word := PickWord()
@@ -43,6 +65,7 @@ func InitGame() {
 func ProcessLetter(letter rune) {
 	for _, l := range LeJeu.DejaMis {
 		if l == letter {
+			fmt.Println("Lettre déjà tentée :", string(letter))
 			return
 		}
 	}
