@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HANGMAN WEB</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/static/style.css">
 
 </head>
 
@@ -12,23 +12,23 @@
 
 <h1>Accueil</h1>
 
-<button onclick="window.location.href='/play';">Jouer</button>
+<button onclick="window.location.href='/play';" class="button-link">Jouer</button>
 
-<style>
-    button {
-        padding: 10px 20px;
-        font-size: 16px;
-        color: white;
-        background-color: #28a745;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+<button id="changeBackground">Changer le fond</button>
 
-    button:hover {
-        background-color: #218838;
-    }
-</style>
+    <script>
+        const button = document.getElementById('changeBackground');
+        let isImage1 = true;
+
+        button.addEventListener('click', () => {
+            document.body.style.backgroundImage = isImage1
+                ? "url('/static/hangman-game-images/moon.png')" // Deuxième image
+                : "url('/static/hangman-game-images/sun.png')"; // Revenir à la première image
+            isImage1 = !isImage1; // Basculer entre les deux états
+        });
+    </script>
+
+
 </main>
 </body>
 </html>
