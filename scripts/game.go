@@ -50,7 +50,7 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 
 	// Structure des données envoyées au template
 	data.HiddenWord = hiddenWord
-	data.PhaseHangman = "/static/hangman-game-images/images/hangman-" + strconv.Itoa(6-lives) + ".svg"
+	data.PhaseHangman = "/static/hangman-game-images/hangman-" + strconv.Itoa(6-lives) + ".svg"
 
 	//if booleen win, servir la page win
 	//else if plus de vie...
