@@ -50,9 +50,12 @@ func Play(w http.ResponseWriter, r *http.Request) {
 	data := struct {
 		HiddenWord string
 		PhasePendu string
+		lives int
+
 	} {
 		HiddenWord: hiddenWord,
 		PhasePendu: "/static/hangman-game-images/images/hangman-" + strconv.Itoa(6 - lives) + ".svg",
+		lives: lives,
 	}
 
 	// Charger et afficher le template
