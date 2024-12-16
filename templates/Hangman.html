@@ -2,34 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hangman - Partie</title>
+    <title>Jeu Hangman</title>
 </head>
 <body>
     <h1>Jeu Hangman</h1>
     <p>Mot à deviner : <strong>{{.Found}}</strong></p>
-
     <p>Vies restantes : {{.NbDeVie}}</p>
 
     <p>Lettres tentées : 
         {{if .DejaMis}}
-            {{range .DejaMis}}{{.}} {{end}}
+            {{range .DejaMis}}{{printf "%c" .}} {{end}}
         {{else}}
             Aucune pour le moment.
         {{end}}
     </p>
 
+    {{if and (ne .NbDeVie 0) (ne .Found .Word)}}
+        <form action="/hangman" method="POST">
+            <label for="letter">Entrez une lettre :</label>
+            <input type="text" id="letter" name="letter" maxlength="1" required>
+            <button type="submit">Valider</button>
+        </form>
+    {{end}}
 
-    <form action="/hangman" method="POST">
-        <label for="letter">Entrez une lettre :</label>
-        <input type="text" id="letter" name="letter" maxlength="1" required>
-        <button type="submit">Valider</button>
-    </form>
-
-    {{if eq .NbDeVie 0}}
-        <p style="color: red;">Vous avez perdu ! Le mot était : {{.Word}}</p>
+{{if eq .NbDeVie 0}}
+    <p style="color: red;">Vous avez perdu ! Le mot était : <strong>{{.Word}}</strong></p>
         <a href="/"><button>Recommencer</button></a>
     {{else if eq .Found .Word}}
-        <p style="color: green;">Bravo ! Vous avez gagné !</p>
+        <p style="color: green;">Félicitations ! Vous avez gagné !</p>
         <a href="/"><button>Recommencer</button></a>
     {{end}}
 </body>

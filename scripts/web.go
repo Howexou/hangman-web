@@ -6,12 +6,13 @@ import (
 )
 
 func Home(w http.ResponseWriter, r *http.Request) {
+	LeJeu = Jeu{}
 	RenderTemplate(w, "Home", nil)
 }
 
 func HandleRequests() {
 	http.HandleFunc("/", Home)
-	http.HandleFunc("/hangman", Hangman)
+	http.HandleFunc("/hangman", Hangman) 
 	http.ListenAndServe(":8081", nil)
 }
 
