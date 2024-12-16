@@ -13,12 +13,13 @@
         <p>Mot à deviner :</p>
         <h2>{{ .HiddenWord }}</h2>
 
+
         <form action="/play" method="POST">
             <label fo  r="guess">Entrez une lettre :</label>
             <input type="text" id="guess" name="guess" maxlength="1" required>
             <button type="submit">Valider</button>
         </form>
     </div>
-
+    <h6> {{ .lives }} </h6>
 </body>
 </html>
