@@ -12,12 +12,12 @@
         <img src="{{ .PhaseHangman }}" alt="pendu image">
         <p>Mot à deviner :</p>
         <h2>{{ .HiddenWord }}</h2>
-
-        <form action="/play" method="POST" autocomplete="off">
-            <label fo  r="guess">Entrez une lettre :</label>
-            <input type="text" id="guess" name="guess" maxlength="1" required>
-            <button type="submit">Valider</button>
-        </form>
+            <form action="/play" method="POST" autocomplete="off">
+                <label fo  r="guess">Entrez une lettre :</label>
+                 <input type="text" id="guess" name="guess" maxlength="1" required>
+                 <button type="submit">Valider</button>
+                    <p>Il te reste <strong>{{.Lives}}</strong> vies.</p>
+         </form>
     </div>
 
 </body>
