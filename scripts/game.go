@@ -23,13 +23,13 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 		initGame()
 	}
 
+	win := false
+
 	// Gestion de la lettre devinée
 	if r.Method == "POST" {
 		r.ParseForm()
 		guess := r.FormValue("guess") // Récupère la lettre qui a été guess
 		corectguess := false
-		//est ce que le mot caché est complété (ne contient aycun '_')
-		//si oui, victoire, servir la page victoire (mettre une variable win, a vrai.)
 
 		// Mise à jour du mot caché
 		newHiddenWord := ""
@@ -46,15 +46,25 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 		}
 
 		hiddenWord = newHiddenWord
+
+		// Vérification si le joueur a gagné
+		win = CheckWin(hiddenWord)
+
+		if lives <= 0 {
+			RenderTemplate(w, "templates/Lose.html", nil)
+			return
+
+		}
+	}
+
+	if win {
+		RenderTemplate(w, "templates/Win.html", nil)
+		return
 	}
 
 	// Structure des données envoyées au template
 	data.HiddenWord = hiddenWord
 	data.PhaseHangman = "/static/hangman-game-images/hangman-" + strconv.Itoa(6-lives) + ".svg"
-
-	//if booleen win, servir la page win
-	//else if plus de vie...
-	//sinon servir la page play
 
 	// Charger et afficher le template
 	t, err := template.ParseFiles("./templates/Play.html")
@@ -63,4 +73,13 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 		return
 	}
 	t.Execute(w, data)
+}
+
+func CheckWin(hiddenWord string) bool {
+	for _, char := range hiddenWord {
+		if char == '_' {
+			return false // Il reste des lettres à deviner
+		}
+	}
+	return true // Le mot est complété
 }
