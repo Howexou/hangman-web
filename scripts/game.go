@@ -23,7 +23,7 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 		initGame()
 	}
 
-	win := false 
+	win := false
 
 	// Gestion de la lettre devinée
 	if r.Method == "POST" {
@@ -46,14 +46,14 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 		}
 
 		hiddenWord = newHiddenWord
-	
+
 		// Vérification si le joueur a gagné
 		win = CheckWin(hiddenWord)
 
-			if lives <= 0 {
-				RenderTemplate(w, "gameover", nil)
-				return
-	
+		if lives <= 0 {
+			RenderTemplate(w, "templates/Lose.html", nil)
+			return
+
 		}
 	}
 

@@ -15,6 +15,7 @@ func HandleRequests() {
 	http.HandleFunc("/", handleIndex)
 	http.HandleFunc("/play", Play)
 	http.HandleFunc("/win", Win)
+	http.HandleFunc("/lose", Lose)
 	http.Handle("/static/", http.StripPrefix("/static/", http.FileServer(http.Dir("templates/static"))))
 	http.ListenAndServe(":8081", nil)
 }
@@ -44,4 +45,8 @@ func handleIndex(w http.ResponseWriter, r *http.Request) {
 
 func Win(w http.ResponseWriter, r *http.Request) {
 	RenderTemplate(w, "victory", nil)
+}
+
+func Lose(w http.ResponseWriter, r *http.Request) {
+	RenderTemplate(w, "gameover", nil)
 }
