@@ -28,7 +28,7 @@ func Play(w http.ResponseWriter, r *http.Request) {
 		// Mise à jour du mot caché
 		newHiddenWord := ""
 		for i, char := range word {
-			if string(char) == guess { // Lettre correcte
+			if string(char) == guess {
 				newHiddenWord += string(char)
 			} else {
 				newHiddenWord += string(hiddenWord[i]) // Conserve les lettres déjà trouvées
