@@ -5,3 +5,6 @@ var Word string        // Mot choisi au hasard
 
 var word string
 var hiddenWord string
+var lives int
+
+

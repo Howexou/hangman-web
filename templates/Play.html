@@ -8,16 +8,17 @@
 <body>
     
     <div class="answerbox">
-    <h1>Jeu du Pendu</h1>
-    <img src="static/hangman-game-images/images/hangman-0.svg" alt="hangman-game-images">
-    <p>Mot à deviner :</p>
-    <h2>{{.HiddenWord}}</h2>
+        <h1>Jeu du Pendu</h1>
+        <img src="{{ .PhasePendu }}" alt="pendu image">
+        <p>Mot à deviner :</p>
+        <h2>{{ .HiddenWord }}</h2>
 
-    <form action="/play" method="POST">
-        <label for="guess">Entrez une lettre :</label>
-        <input type="text" id="guess" name="guess" maxlength="1" required>
-        <button type="submit">Valider</button>
-    </form>
+        <form action="/play" method="POST">
+            <label fo  r="guess">Entrez une lettre :</label>
+            <input type="text" id="guess" name="guess" maxlength="1" required>
+            <button type="submit">Valider</button>
+        </form>
     </div>
+
 </body>
 </html>

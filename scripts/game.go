@@ -3,6 +3,7 @@ package hangman
 import (
 	"html/template"
 	"net/http"
+	"strconv"
 )
 
 // Initialiser le jeu
@@ -24,24 +25,34 @@ func Play(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "POST" {
 		r.ParseForm()
 		guess := r.FormValue("guess") // Récupère la lettre qui a été guess
+		corectguess := false
 
 		// Mise à jour du mot caché
 		newHiddenWord := ""
 		for i, char := range word {
 			if string(char) == guess { // Lettre correcte
 				newHiddenWord += string(char)
+				corectguess = true
 			} else {
 				newHiddenWord += string(hiddenWord[i]) // Conserve les lettres déjà trouvées
 			}
 		}
+		if !corectguess {
+			lives -= 1
+		}
+		
 		hiddenWord = newHiddenWord
 	}
+
+	
 
 	// Structure des données envoyées au template
 	data := struct {
 		HiddenWord string
-	}{
+		PhasePendu string
+	} {
 		HiddenWord: hiddenWord,
+		PhasePendu: "/static/hangman-game-images/images/hangman-" + strconv.Itoa(6 - lives) + ".svg",
 	}
 
 	// Charger et afficher le template
@@ -51,4 +62,8 @@ func Play(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	t.Execute(w, data)
+
+	
+
+
 }

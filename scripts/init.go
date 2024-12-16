@@ -9,6 +9,7 @@ import (
 
 // Importe les mots dans un tableau de string
 func Words() {
+	lives = 6
 	// Ouvre le fichier
 	f, err := os.Open("DICTIONNAIRE/words.txt")
 	if err != nil {
@@ -35,3 +36,5 @@ func PickWord() string {
 	Word = WordsList[rand.Intn(len(WordsList))]
 	return Word
 }
+
+
