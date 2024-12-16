@@ -43,8 +43,8 @@ p {
     left: 50%; 
     transform: translateX(-50%); 
     bottom: 15%; 
-    padding: 10px 20px; 
-    font-size: 18px; 
+    padding: 40px 80px; 
+    font-size: 32px; 
     color: white; 
     background-color: #4CAF50; 
     text-decoration: none; 

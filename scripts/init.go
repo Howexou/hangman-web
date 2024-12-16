@@ -3,6 +3,7 @@ package hangman
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"math/rand"
 	"os"
 )
@@ -16,15 +17,14 @@ func Words() {
 		fmt.Println(err)
 		return
 	}
-	r := bufio.NewReader(f)
 
-	// Lire ligne par ligne
-	for {
-		line, err := r.ReadString('\n')
-		if err != nil {
-			break
-		}
-		WordsList = append(WordsList, line)
+	scanner := bufio.NewScanner(f)
+	for scanner.Scan() {
+		WordsList = append(WordsList, scanner.Text())
+	}
+
+	if err := scanner.Err(); err != nil {
+		log.Fatal(err)
 	}
 
 	// Fermer le fichier
