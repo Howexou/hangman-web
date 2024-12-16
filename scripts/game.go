@@ -1,6 +1,7 @@
 package hangman
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 )
@@ -8,6 +9,7 @@ import (
 // Initialiser le jeu
 func initGame() {
 	word = PickWord()          // Mot à deviner
+	fmt.Println(word, len(word))
 	hiddenWord = ""            // Réinitialise le mot caché
 	for range word {           // Crée "_" pour chaque lettre
 		hiddenWord += "_"
@@ -24,6 +26,9 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 	if r.Method == "POST" {
 		r.ParseForm()
 		guess := r.FormValue("guess") // Récupère la lettre qui a été guess
+
+		//est ce que le mot caché est complété (ne contient aycun '_')
+		//si oui, victoire, servir la page victoire (mettre une variable win, a vrai.)
 
 		// Mise à jour du mot caché
 		newHiddenWord := ""
@@ -43,6 +48,10 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 	}{
 		HiddenWord: hiddenWord,
 	}
+
+	//if booleen win, servir la page win
+	//else if plus de vie...
+	//sinon servir la page play
 
 	// Charger et afficher le template
 	t, err := template.ParseFiles("./templates/Play.html")
