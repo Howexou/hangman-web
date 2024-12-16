@@ -10,17 +10,25 @@
 
 <body>
 
-    
- 
-
 <h1>Accueil</h1>
 
+<button onclick="window.location.href='/play';" class="button-link">Jouer</button>
 
-<main>
-    <a href="Play.html"><button>GO</button></a>
+<button id="changeBackground">Changer le fond</button>
+
+    <script>
+        const button = document.getElementById('changeBackground');
+        let isImage1 = true;
+
+        button.addEventListener('click', () => {
+            document.body.style.backgroundImage = isImage1
+                ? "url('/static/hangman-game-images/moon.png')" // Deuxième image
+                : "url('/static/hangman-game-images/sun.png')"; // Revenir à la première image
+            isImage1 = !isImage1; // Basculer entre les deux états
+        });
+    </script>
 
 
 </main>
-
 </body>
-</html> 
+</html>
