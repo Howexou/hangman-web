@@ -1,0 +1,72 @@
+body {
+    background-image: url('/static/hangman-game-images/lose.png');
+
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    height: 100vh;
+
+}
+
+
+.img-fond {
+
+    /* width: 100%; 
+    max-width: 500px; 
+    height: auto;
+    border-radius: 15px; 
+    display: block; 
+    margin: 20px auto; 
+    transition: transform 0.3s ease; */
+
+    position: absolute; /* Positionnement absolu */
+    top: 50%; /* 50% depuis le haut */
+    left: 50%; /* 50% depuis la gauche */
+    transform: translate(-50%, -50%); /* Décalage pour centrer parfaitement */
+    max-width: 100%; /* Pour s'assurer qu'il ne dépasse pas l'écran */
+    max-height: 100%; /* Pour qu'il reste visible en hauteur */
+    width: 500px; /* Conserve les proportions */
+    height: 500px;
+    
+}
+
+.button-link {
+    position: absolute; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    bottom: 15%; 
+    padding: 40px 80px; 
+    font-size: 32px; 
+    color: white; 
+    background-color: #4CAF50; 
+    text-decoration: none; 
+    border-radius: 8px; 
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2); 
+    transition: background-color 0.3s ease; 
+}
+
+.button-link:hover {
+    background-color: #407042; 
+}
+
+h1 {
+
+text-align: center;
+font-size: 50px;
+
+}
+
+.text-box {
+
+    width: 660px; /* Largeur de la boîte */
+    padding: 20px; /* Espace intérieur */
+    margin: 20px auto; /* Centre horizontalement */
+    border: 2px solid #333; /* Bordure noire de 2px */
+    border-radius: 10px; /* Coins arrondis */
+    background-color: #4CAF50; /* Couleur de fond */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    text-align: center; /* Centrer le texte */
+    font-family: myFont; /* Police */
+    color: #333;
+
+}
