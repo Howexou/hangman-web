@@ -10,4 +10,5 @@ var lives int
 var data struct {
 	HiddenWord string
 	PhaseHangman string
-	}
+	Lives int
+}

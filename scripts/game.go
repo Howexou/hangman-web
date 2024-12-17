@@ -64,7 +64,7 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 	// Structure des données envoyées au template
 	data.HiddenWord = hiddenWord
 	data.PhaseHangman = "/static/hangman-game-images/hangman-" + strconv.Itoa(6-lives) + ".svg"
-
+	data.Lives = lives
 	// Charger et afficher le template
 	t, err := template.ParseFiles("templates/Play.html")
 	if err != nil {
