@@ -1,4 +1,10 @@
+@font-face {
+	font-family: Pokepolice;
+	src: url(/static/hangman-game-images/pokefont.ttf) format('truetype');
+}
+
 body {
+	font-family: 'Pokepolice';
     margin: 0;
     height: 100vh;
     display: flex;
@@ -15,9 +21,10 @@ audio {
 }
 
 h1 {
+	font-family: Pokepolice;
     position: absolute; /* Placement absolu */
     top: 20px;
-    font-size: 50px;
+    font-size: 150px;
 
 }
 

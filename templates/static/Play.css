@@ -1,3 +1,8 @@
+@font-face {
+	font-family: Pokepolice;
+	src: url(/static/hangman-game-images/pokefont.ttf) format('truetype');
+}
+
 .answerbox {
 
     text-align: center;
@@ -28,13 +33,23 @@
     }
     
     h1 {
-    
-    color: rgb(255, 255, 255);
-    
-    
-    
-        
+	font-family: Pokepolice;
+    color: rgb(0, 0, 0);
+    position: absolute; /* Positionnement absolu */
+    top: 0; /* Aligne en haut de la page */
+	left: 50%;
+	transform: translateX(-50%);
+    text-align: center;  
     }
+
+	p {
+	
+		
+
+	}
+
+
+
 
 
 * {
