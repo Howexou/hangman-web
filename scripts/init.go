@@ -7,12 +7,9 @@ import (
 	"math/rand"
 	"os"
 )
-
-// Importe les mots dans un tableau de string
+																// Importe les mots dans un tableau de string
 func Words() {
-	// Définit le nombre de vies
-	lives = 6
-	// Ouvre le fichier
+														// Ouvre le fichier
 	f, err := os.Open("DICTIONNAIRE/words.txt")
 	if err != nil {
 		fmt.Println(err)

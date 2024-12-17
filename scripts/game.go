@@ -8,9 +8,9 @@ import (
 
 // Initialiser le jeu
 func initGame() {
-	word = PickWord() // Mot à deviner
-	hiddenWord = ""   // Réinitialise le mot caché
-	for range word {  // Crée "_" pour chaque lettre
+	word = PickWord() 	// Mot à deviner
+	hiddenWord = ""  	 // Réinitialise le mot caché
+	for range word {  	// Crée "_" pour chaque lettre
 		hiddenWord += "_"
 	}
 	lives = 6
