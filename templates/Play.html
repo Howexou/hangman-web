@@ -6,19 +6,26 @@
     <link rel="stylesheet" href="static/Play.css">
 </head>
 <body>
+    <div class="container">
+        <div class="answerbox">
+            <h1>Jeu du Pendu</h1>
+            <img src="{{ .PhaseHangman }}" alt="pendu image">
+            <h2>{{ .HiddenWord }}</h2>
     
-    <div class="answerbox">
-        <h1>Jeu du Pendu</h1>
-        <img src="{{ .PhaseHangman }}" alt="pendu image">
-        <p>Mot à deviner :</p>
-        <h2>{{ .HiddenWord }}</h2>
+          
+        </div>
 
-        <form action="/play" method="POST" autocomplete="off">
-            <label fo  r="guess">Entrez une lettre :</label>
-            <input type="text" id="guess" name="guess" maxlength="1" required>
-            <button type="submit">Valider</button>
+    <div class="combobox">
+        <form action="/play" method="POST" autocomplete="off" class="guess-form">
+            <label for="guess">Entrez une lettre :</label>
+            <div class="input-group">
+                <input type="text" id="guess" name="guess" maxlength="1" required>
+                <button type="submit">Valider</button>
+            </div>
         </form>
     </div>
+    <p>Il te reste <strong>{{.Lives}}</strong> essais.</p>
+</div>
 
     <label class="switch" id="changeBackgrounde">
         <input class="switch__input" type="checkbox" role="switch" id="backgroundSwitch">
