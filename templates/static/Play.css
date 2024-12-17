@@ -43,8 +43,8 @@
     top: 0; /* Aligne en haut de la page */
 	left: 50%;
 	transform: translateX(-50%);
-    text-align: center;  
-    }
+    text-align: center;
+}
 	
 	p {
 		text-align: center;
