@@ -1,3 +1,4 @@
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,31 +9,42 @@ body {
     background-repeat: no-repeat; 
     height: 100vh;
 }
+
+
 header {
     background-color: #333;
     color: white;
     padding: 10px;
     text-align: center;
 }
+
+
 h1 {
     font-size: 2em;
     text-align: center;
 }
+
+
 main {
     padding: 20px;
     text-align: center;
 }
+
+
 p {
     color: #555;
     font-size: 1.2em;
 }
+
+
+
 .button-link {
     position: absolute; 
     left: 50%; 
     transform: translateX(-50%); 
     bottom: 15%; 
-    padding: 10px 20px; 
-    font-size: 18px; 
+    padding: 40px 80px; 
+    font-size: 32px; 
     color: white; 
     background-color: #4CAF50; 
     text-decoration: none; 
@@ -43,4 +55,5 @@ p {
 
 button:hover {
     background-color: #333c6e;
+
 }
