@@ -34,7 +34,6 @@
     
     h1 {
 	font-family: Pokepolice;
-    color: rgb(0, 0, 0);
     position: absolute; /* Positionnement absolu */
     top: 0; /* Aligne en haut de la page */
 	left: 50%;
@@ -42,12 +41,7 @@
     text-align: center;  
     }
 
-	p {
 	
-		
-
-	}
-
 
 
 

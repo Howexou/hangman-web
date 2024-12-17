@@ -1,13 +1,17 @@
-body {
-    background-image: url('/static/hangman-game-images/lose.png');
+@font-face {
+	font-family: Pokepolice;
+	src: url(/static/hangman-game-images/pokefont.ttf) format('truetype');
+}
 
+body {
+    font-family: Pokepolice;
+    background-image: url('/static/hangman-game-images/win.png');
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
     height: 100vh;
 
 }
-
 
 .img-fond {
 
@@ -31,12 +35,13 @@ body {
 }
 
 .button-link {
+    font-family: Pokepolice;
     position: absolute; 
     left: 50%; 
     transform: translateX(-50%); 
     bottom: 15%; 
     padding: 40px 80px; 
-    font-size: 32px; 
+    font-size: 50px; 
     color: white; 
     background-color: #4CAF50; 
     text-decoration: none; 
@@ -50,9 +55,9 @@ body {
 }
 
 h1 {
-
+font-family: Pokepolice;
 text-align: center;
-font-size: 50px;
+font-size: 70px;
 
 }
 
