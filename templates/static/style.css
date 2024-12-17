@@ -11,6 +11,10 @@ body {
     transition: background 0.5s ease; /* Animation fluide */
 }
 
+audio {
+	display: none; /* Cache complètement l'élément audio */
+}
+
 h1 {
     position: absolute; /* Placement absolu */
     top: 20px;
