@@ -2,20 +2,24 @@ h1 {
     color: rgb(255, 255, 255);
     font-size: 58px;
     margin-bottom: 50px;
+    margin-right: 850px;
 }
 
 h2 {
     font-size: 48px;
     font-weight: bold;
+    margin-right: 850px;
 }
 
 p {
     font-size: 30px;
+    margin-right: 850px;
 }
 
 img {
     width: 500px;
     height: auto;
+    margin-right: 850px;
 }
 
 .answerbox {
@@ -27,7 +31,6 @@ img {
 
 body {
     font-size: 32px;
-    background-color: rgb(247, 116, 236);
 }
 
 input[type="text"] {
@@ -38,6 +41,14 @@ input[type="text"] {
 button {
     font-size: 40px;
     padding: 25px;
-    background-color: #4CAF50;
+    background-color: #eb7d17;
     color: white;
+    margin-right: 850px;
+}
+
+body {
+    background-image: url("/static/hangman-game-images/play.png");
+    background-color: #f0f0f0;
+    background-size: cover;
+    background-position: center center;
 }
