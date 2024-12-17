@@ -33,6 +33,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, data interface{}) {
 
 // Gère les requêtes HTTP pour la route "/"
 func handleIndex(w http.ResponseWriter, r *http.Request) { 
+	initGame()
 	randomWord := PickWord()
 	fmt.Println("Mot aléatoire généré : ", randomWord)
 

@@ -16,13 +16,17 @@ func initGame() {
 	lives = 6
 }
 
-func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
+func ResetGame(w http.ResponseWriter, r *http.Request) {
+	initGame()
+	http.Redirect(w, r, "/play", http.StatusSeeOther)
+}
 
-		if word == "" { // On initialise
+func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
+	win := false
+
+	if word == "" { // On initialise
 		initGame()
 	}
-
-	win := false
 
 	// Gestion de la lettre devinée
 	if r.Method == "POST" {
@@ -65,6 +69,7 @@ func Play(w http.ResponseWriter, r *http.Request) { // Fonction de jeu
 	data.HiddenWord = hiddenWord
 	data.PhaseHangman = "/static/hangman-game-images/hangman-" + strconv.Itoa(6-lives) + ".svg"
 	data.Lives = lives
+
 	// Charger et afficher le template
 	t, err := template.ParseFiles("templates/Play.html")
 	if err != nil {
@@ -83,6 +88,5 @@ func CheckWin(hiddenWord string) bool {
 	return true // Le mot est complété
 }
 func RestartGame(w http.ResponseWriter, r *http.Request) {
-	initGame() // Réinitialiser toutes les variables globales
-	http.Redirect(w, r, "/play", http.StatusSeeOther) // Rediriger vers le jeu
+
 }
