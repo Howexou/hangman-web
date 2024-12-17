@@ -1,27 +1,43 @@
-.answerbox {
+h1 {
+    color: rgb(255, 255, 255);
+    font-size: 58px;
+    margin-bottom: 50px;
+}
 
+h2 {
+    font-size: 48px;
+    font-weight: bold;
+}
+
+p {
+    font-size: 30px;
+}
+
+img {
+    width: 500px;
+    height: auto;
+}
+
+.answerbox {
     text-align: center;
     margin-left: 250px;
     margin-right: 250px;
-    
-    
-    
-    }   
-    
-    body {
-    
-        background-color: aquamarine;
-    
-    
-    
-    
-    }
-    
-    h1 {
-    
-    color: rgb(255, 255, 255);
-    
-    
-    
-        
-    }
+    margin-top: 100px;
+}
+
+body {
+    font-size: 32px;
+    background-color: rgb(247, 116, 236);
+}
+
+input[type="text"] {
+    font-size: 40px;
+    padding: 25px;
+} 
+
+button {
+    font-size: 40px;
+    padding: 25px;
+    background-color: #4CAF50;
+    color: white;
+}

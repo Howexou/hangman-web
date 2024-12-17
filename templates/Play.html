@@ -13,9 +13,13 @@
         <p>Mot à deviner :</p>
         <h2>{{ .HiddenWord }}</h2>
             <form action="/play" method="POST" autocomplete="off">
-                <label fo  r="guess">Entrez une lettre :</label>
+                
+                
+                <div class="answerbox2">
                  <input type="text" id="guess" name="guess" maxlength="1" required>
                  <button type="submit">Valider</button>
+                 </div>   
+                    
                     <p>Il te reste <strong>{{.Lives}}</strong> vies.</p>
          </form>
     </div>
